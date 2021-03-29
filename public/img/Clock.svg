@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="17.5" viewBox="0 0 17.5 17.5">
+  <g id="Clock" transform="translate(-3.25 -3.25)">
+    <path id="Trazado_424" data-name="Trazado 424" d="M12.75,7a.75.75,0,0,0-1.5,0v5a.75.75,0,0,0,.352.636l3,1.875a.75.75,0,0,0,.8-1.272L12.75,11.584Z" fill="#4c1d15"/>
+    <path id="Trazado_425" data-name="Trazado 425" d="M12,3.25A8.75,8.75,0,1,0,20.75,12,8.75,8.75,0,0,0,12,3.25ZM4.75,12A7.25,7.25,0,1,1,12,19.25,7.25,7.25,0,0,1,4.75,12Z" fill="#4c1d15" fill-rule="evenodd"/>
+  </g>
+</svg>

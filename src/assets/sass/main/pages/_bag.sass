@@ -1,0 +1,141 @@
+.bag
+  &__container
+    margin: 7rem 0 3rem 0
+    width: -moz-available
+    width: -webkit-fill-available
+
+  &__container-card
+    margin: 1.75rem 0 3rem 0
+    display: flex
+    padding-left: 1rem
+  &__big-card
+    background-color: $color-blanco
+    box-shadow: 0 3px 6px $color-gris
+    border-radius: 10px
+    padding: 1rem
+    width: 9rem
+    height: 4.5rem
+  &__icon
+    display: grid
+    grid-template: 1fr / repeat(4,1fr)
+    a
+      padding: .25rem
+
+    button
+      padding: .25rem
+    img
+      height: 100%
+  &__save
+    height: 50vh
+  &__container-sc
+    display: grid
+    grid-template: 1fr  / 1fr 1fr
+    gap: 1rem
+    margin: 1.75rem 0 3rem 0
+  &__small-card
+    background-color: $color-blanco
+    border-radius: 10px
+    box-shadow: 0 3px 6px $color-gris
+    display: flex
+    height: 3rem
+    align-items: center
+  &__icon-sc
+    margin: 0 1rem
+    display: flex
+    align-items: center
+    width: 2rem
+    img
+      height: 100%
+  &__text-sc
+    h4
+      line-height: 16px
+  &__subtitle
+    margin-top: 1rem
+  &__btn-organized
+    position: absolute
+    bottom: 7rem
+//single
+
+.bag
+  &__single
+    margin-top: 3rem
+    &-title
+      margin-top: .5rem
+    &-products
+      margin-top: 1.5rem
+      margin-bottom: 1.5rem
+    &-formu
+      font-size: 16px
+      padding: 1.5rem 0 2rem 0
+      border-bottom: 1px solid $color-gris
+      div
+        margin-bottom: .5rem
+        display: flex
+        align-items: center
+        img
+          width: 12.5px
+          margin-left: .125rem
+          margin-right: .675rem
+      div:nth-child(2)
+        img
+          width: 17.5px
+          margin-left: 0
+          margin-right: .5rem
+    &-another
+      border-top: 1px solid $color-gris
+      border-bottom: 1px solid $color-gris
+      padding: 1rem 0
+      display: flex
+      align-items: center
+      svg
+        width: 17px
+        height: 100%
+        fill: $color-negro
+        margin-right: 1rem
+  &__bag
+    svg
+      height: 8vh
+//formu
+.formu
+  &__title
+    display: flex
+    align-items: center
+    margin: 1.5rem 0
+    div
+      display: flex
+      align-items: center
+      margin-right: 1rem
+      img
+        width: 1rem
+  &__buttons
+    margin-top: 3rem
+  &__select
+    padding: 1rem 0 .75rem .5rem
+    border-bottom: 1px solid $color-gris
+    margin-bottom: 1rem
+    display: flex
+    align-items: center
+    justify-content: space-between
+    h3,h4
+      font-weight: 400
+    &-display
+      display: flex
+      justify-content: space-between
+      div
+        display: flex
+        align-items: center
+      button
+        display: flex
+        align-items: center
+      span
+        margin: 0 1rem
+  &__btn
+    position: absolute
+    bottom: 2rem
+  &__sun
+   img
+     width: 1.5rem !important
+
+
+
+

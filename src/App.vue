@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header v-if="$store.state.displayHeader" />
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "@/components/Header.vue"
+import ObtenerViaje from "@/mixins/obtenerViajes.js"
 
 export default {
-  name: 'App',
+  name: "Main",
   components: {
-    HelloWorld
-  }
-}
-</script>
+    Header
+  },
+  mounted: function () {
+    if(this.$store.state.viajes.length === 0){
+      this.obtenerViajes();
+    }
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  },
+  mixins: [
+    ObtenerViaje
+  ],
+
+
+};
+</script>

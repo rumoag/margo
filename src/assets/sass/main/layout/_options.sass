@@ -1,0 +1,70 @@
+.actions
+  position: fixed
+  background-color: #efefef
+  z-index: 1000
+  height: 100%
+  width: 100%
+  top: 0
+  left: 0
+  animation-name: actions
+  animation-duration: 500ms
+  animation-timing-function: ease
+  animation-fill-mode: forwards
+
+  div.actions__duo
+    margin-top: 1rem
+    margin-bottom: 2rem
+  &__ind
+    background-color: $color-blanco
+    border-top: 1px solid $color-gris
+    border-bottom: 1px solid $color-gris
+    padding: .75rem 23px
+    display: flex
+    align-items: center
+    width: 100%
+    img
+      margin-right: 1rem
+      width: 14.5px
+    h3
+      font-weight: 400
+  &__ind-img
+    background-color: $color-gris
+    padding: .75rem 23px
+    display: grid
+    grid-template-columns: repeat( 5, 1fr)
+    width: -moz-available
+    width: -webkit-fill-available
+    height: 70vh
+    grid-gap: .5rem
+    overflow-y: scroll
+    scrollbar-width: thin
+    scrollbar-color: $color-gris $color-negro;
+    &::-webkit-scrollbar
+      width: 10px
+    &::-webkit-scrollbar-track
+      background: $color-gris
+      border-radius: 20px
+
+    &::-webkit-scrollbar-thumb
+      background-color: $color-negro
+      border-radius: 20px
+      border: 3px solid $color-gris
+
+  &__img
+    height: 75px!important
+    cursor: pointer
+    object-fit: cover
+    border-radius: 8px
+  @keyframes actions
+    from
+      transform: translateY(100vh)
+    to
+      transform: translateY(0rem)
+  &__noshow
+    animation-name: desactions
+  @keyframes desactions
+    from
+      transform: translateY(0rem)
+    to
+      transform: translateY(100vh)
+

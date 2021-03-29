@@ -1,0 +1,33 @@
+// Mixins
+@mixin icon($utf)
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  font-family: $fuente-iconos
+
+  &::before
+    content: $utf
+    speak: none
+    font-size: 100%
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    padding:
+      left: 1px
+      right: 1px
+
+
+@mixin flex($justify, $align, $direction,$wrap)
+  display: flex
+  justify-content: $justify
+  align-items: $align
+  flex-direction: $direction
+  flex-wrap: $wrap
+
+@mixin grid($columns, $rows, $direction)
+  display: grid
+  grid-template-columns: repeat($columns, 1fr)
+  grid-template-rows: repeat($rows, 1fr)
