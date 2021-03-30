@@ -9,10 +9,10 @@
       </div>
     </header>
     <section class="plan">
-      <div class=" " >
+      <div class="plan__wrapper" :style="`transform: translateX(${translate})`">
         <div class="plan__container ">
           <div v-for="(dia, index) in $store.state.diasActividad" :key="index">
-            <div class="plan__day"  @click=" pasarDia(dia); activarClase(index ); cambiarDiaInicial(index)" :data-day="index">
+            <div class="plan__day"  @click="translateDay(index);pasarDia(dia); activarClase(index ); cambiarDiaInicial(index)" :data-day="index">
               <div class="plan__text" >
                 <h3>Día {{ index + 1 }}</h3>
                 <p>{{ dia }}</p>
@@ -62,6 +62,7 @@ export default {
   data: function() {
     return {
       diaActive: '',
+      translate: '',
     }
   },
   components: {
@@ -79,7 +80,13 @@ export default {
     cambiarDiaInicial: function (diaInicio){
       this.$store.state.diaInicialActividades = diaInicio
     },
-
+    translateDay: function (index){
+      if (index ===0){
+        this.translate = 0
+      } else {
+      this.translate = (-9.5)*index + 9.5 +'rem';
+      }
+    }
   },
   mixins: [
     obtenerPlanesViajes

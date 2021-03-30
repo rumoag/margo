@@ -74,7 +74,6 @@
 
 
   &__small-card
-    width: 10rem
     height: 10rem
     background-color: $color-blanco
     box-shadow: 0 3px 6px $color-gris
@@ -105,11 +104,17 @@
     margin-top: 3rem
     margin-bottom: 20rem
   &__wrap
-    display: flex
+    display: grid
     flex-wrap: wrap
-    div.travel__small-card
-      margin-right: 1rem
-      margin-bottom: 1rem
+    grid-gap: 1rem
+    grid-template-columns: 1fr 1fr
+    @media (min-width: 600px)
+      grid-template-columns: 1fr 1fr 1fr
+    @media (min-width: 800px)
+      grid-template-columns: 1fr 1fr 1fr 1fr
+    @media (min-width: 1200px)
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+
   &__no-date
     width: -moz-available
     width: -webkit-fill-available

@@ -20,7 +20,7 @@
 <script>
 import ObtenerPlanesViaje from "@/mixins/obtenerPlanesViajesSingle.js"
 export default {
-  name: "TravelTitle",
+  name: "ActivityNote",
   props: {
     activityNote: String
   },

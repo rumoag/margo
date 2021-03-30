@@ -1,6 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="21.634" height="23" viewBox="0 0 21.634 23">
-  <g id="User" transform="translate(-4.25 -3.75)">
-    <path id="Trazado_470" data-name="Trazado 470" d="M13.484,3.75a5.234,5.234,0,1,0,5.234,5.234A5.234,5.234,0,0,0,13.484,3.75Z" transform="translate(1.583 0)" fill="#4c1d15"/>
-    <path id="Trazado_471" data-name="Trazado 471" d="M9.484,13.25A5.234,5.234,0,0,0,4.25,18.484v1.659a2.145,2.145,0,0,0,1.8,2.117,55.961,55.961,0,0,0,18.035,0,2.145,2.145,0,0,0,1.8-2.117V18.484A5.234,5.234,0,0,0,20.65,13.25h-.476a2.445,2.445,0,0,0-.758.121l-1.208.395a10.12,10.12,0,0,1-6.282,0l-1.208-.395a2.445,2.445,0,0,0-.758-.121Z" transform="translate(0 3.759)" fill="#4c1d15"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 21.6 23" style="enable-background:new 0 0 21.6 23;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4C1D15;}
+</style>
+<g>
+	<circle class="st0" cx="10.8" cy="5.2" r="5.2"/>
+	<path class="st0" d="M16.4,13.3C16.4,13.3,16.4,13.3,16.4,13.3h-0.5c-0.3,0-0.5,0-0.8,0.1L14,13.8c-2,0.7-4.2,0.7-6.3,0l-1.2-0.4
+		c-0.2-0.1-0.5-0.1-0.8-0.1H5.2c-2.9,0-5.2,2.3-5.2,5.2v1.7c0,1.1,0.8,1.9,1.8,2.1c6,1,12.1,1,18,0c1-0.2,1.8-1.1,1.8-2.1v-1.7
+		C21.6,15.6,19.3,13.3,16.4,13.3z"/>
+</g>
 </svg>

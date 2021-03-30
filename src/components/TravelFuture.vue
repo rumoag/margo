@@ -5,7 +5,7 @@
         <h2>Futuros</h2>
       </div>
     </section>
-    <div v-if="$store.state.viajesFuturos.length !== 0">
+    <div v-if="$store.state.viajesFuturos.length !== 0" class="travel__container-card travel__wrap container" >
       <Card v-for="viaje in $store.state.viajesFuturos" :key="viaje.id" :id="viaje.id"></Card>
     </div>
     <div v-else class="container">
@@ -22,7 +22,7 @@
   export default {
     name: "TravelFuture",
     components: {
-      Card
+      Card,
     },
   };
 </script>

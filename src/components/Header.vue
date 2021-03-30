@@ -11,7 +11,7 @@
             <i class="icon-bag"></i>
         </li>
       </router-link>
-      <router-link to="/About">
+      <router-link to="/User">
         <li class="menu__icon">
           <i class="icon-user"></i>
         </li>

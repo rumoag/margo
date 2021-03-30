@@ -19,10 +19,7 @@
           <ActivityDuration :HoraInicio="horaInicio" :Duration="horaFin" ></ActivityDuration>
           <ActivityMoney  :activityMoney="gastoActividad"> </ActivityMoney>
         </div>
-        <div class="activitie__file-upload">
-          <i class="icon-file-upload"></i>
-          <input type="file" placeholder="Archivo" >
-        </div>
+        <ActivityFile></ActivityFile>
         <ActivityNote :activityNote="comentario"></ActivityNote>
       </div>
     </section>
@@ -37,6 +34,7 @@ import ActivityMoney from "@/components/planComponents/ActivityMoney.vue"
 import ActivityNote from "@/components/planComponents/ActivityNote.vue"
 import ActivityIcon from "@/components/planComponents/ActivityIcon.vue"
 import ActivityOptions from "@/components/planComponents/ActivityOptions.vue"
+import ActivityFile from "@/components/planComponents/ActivityFile.vue"
 
 import BackBottonBlack from "@/components/smallComponents/BackBottonBlack.vue"
 
@@ -50,7 +48,8 @@ export default {
     ActivityMoney,
     ActivityNote,
     ActivityIcon,
-    ActivityOptions
+    ActivityOptions,
+    ActivityFile
 
   },
   computed: {

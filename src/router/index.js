@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import TravelSingle from '../views/TravelSingle.vue'
 import TravelPlan from '../views/TravelPlan.vue'
 import ActivitySingle from '../views/ActivitySingle.vue'
+import User from '../views/User.vue'
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,11 @@ const routes = [
     path: '/about/',
     name: 'About',
     component: About
+  },
+  {
+    path: '/user/',
+    name: 'User',
+    component: User
   },
   {
     path: '/travel/:travelId',

@@ -14,7 +14,7 @@
              @change="comprobarTitle()"
         >
       <datalist id="items" >
-        <option v-for="ciudad in ciudades" :key="ciudad.nombre" :value="ciudad.nombre"></option>
+        <option v-for="ciudad in ciudades" :key="ciudad.nombre" :value="ciudad.place_name"></option>
       </datalist>
     </form>
   </div>
@@ -31,28 +31,37 @@ export default {
     return {
       travelFalse: false,
       busqueda: '',
-      ciudades: [
-        {
-            nombre: "Albacete"
-        },
-        {
-          nombre: "Cuenca"
-        }
-        ,
-        {
-          nombre: "Barcelona"
-        }
-        ]
+      ciudades: []
     }
+  },
+  watch: {
+    busqueda: function (){
+      if (this.busqueda.length === 0 | this.busqueda ===''| this.busqueda === null | this.busqueda === undefined){
+        return this.busqueda = ''
+
+      } else {
+        this.obtenerLocalizaciones()
+      }
+    }
+
   },
   methods: {
     comprobarTitle: function (){
-      let comprobar = this.ciudades.some(ciudad => ciudad.nombre === this.busqueda)
+
+      let comprobar = this.ciudades.some(ciudad => ciudad.place_name === this.busqueda)
       if (comprobar){
-        this.actualizarlocation(this.$route.params.travelId, this.busqueda);
+        const longitud = this.ciudades.filter( (ciudad)=>{
+          return ciudad.place_name === this.busqueda
+        })[0].center[1];
+        console.log(longitud)
+        const latitud = this.ciudades.filter( (ciudad)=>{
+          return ciudad.place_name === this.busqueda
+        })[0].center[0];
+        console.log(latitud)
+        this.actualizarlocation(this.$route.params.travelId, this.busqueda, longitud.toString(), latitud.toString());
       }
     },
-    actualizarlocation: function (id, location){
+    actualizarlocation: function (id, location,longitud, latitud){
       this.travelFalse=false
       fetch(this.$store.state.URL_UPDATE, {
         headers: {
@@ -67,6 +76,8 @@ export default {
               "id": id,
               "fields": {
                 "Localizacion": location,
+                "Longitud":  longitud,
+                "Latitud": latitud
               }
             }
           ]
@@ -90,7 +101,15 @@ export default {
     },
     observador: function(){
       setTimeout(this.observar,100)
-    }
+    },
+    obtenerLocalizaciones : function () {
+      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.busqueda}.json?language=es&types=region,country&access_token=pk.eyJ1IjoicnVtb2FnIiwiYSI6ImNrbGkybHJ0MDA5M2EyeG5tZHl0dTZocDIifQ.5uMl_i2kS7adppX4xGvASw&autocomplete=true`)
+          .then((response) => response.json())
+          .then((json) => {this.ciudades = json.features})
+      //then cuando acabe una linea haz otra
+
+    },
+
   },
   mixins: [
     ObtenerViaje
