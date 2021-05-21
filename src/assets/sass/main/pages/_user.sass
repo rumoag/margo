@@ -21,3 +21,113 @@
   &__link
     text-decoration: underline
     font-weight: 500
+.user
+  position: fixed
+  background-color: #efefef
+  z-index: -1
+  height: 100%
+  width: 100%
+  top: 0
+  left: 0
+
+  div.user__duo
+    margin-top: 1rem
+    margin-bottom: 2rem
+  &__header
+    position: fixed
+    width: 100%
+    top: 0
+  &__body
+    margin-top: 6rem
+  &__ind
+    background-color: $color-blanco
+    border-top: 1px solid $color-gris
+    border-bottom: 1px solid $color-gris
+    padding: .75rem 23px
+    display: flex
+    align-items: center
+    width: 100%
+    img
+      margin-right: 1rem
+      width: 14.5px
+    h3
+      font-weight: 400
+  &__ind-img
+    background-color: $color-gris
+    padding: .75rem 23px
+    display: grid
+    grid-template-columns: repeat( 5, 1fr)
+    width: -moz-available
+    width: -webkit-fill-available
+    height: 70vh
+    grid-gap: .5rem
+    overflow-y: scroll
+    scrollbar-width: thin
+    scrollbar-color: $color-gris $color-negro;
+    &::-webkit-scrollbar
+      width: 10px
+    &::-webkit-scrollbar-track
+      background: $color-gris
+      border-radius: 20px
+
+    &::-webkit-scrollbar-thumb
+      background-color: $color-negro
+      border-radius: 20px
+      border: 3px solid $color-gris
+
+  &__img
+    height: 75px!important
+    cursor: pointer
+    object-fit: cover
+    border-radius: 8px
+  &-log
+
+    &__body
+      background-color: $color-blanco
+      height: 100%
+      margin-top: 6rem
+    &__organizer
+      display: grid
+      grid-template: 1fr 1fr / 1fr
+      grid-gap: 1rem
+      height: 9rem
+      padding-top: 2.5rem
+      padding-bottom: 1rem
+      div
+        border-bottom: 1px solid $color-gris
+      input
+        height: 3rem
+        &::placeholder
+          color: $color-gris
+  &-sign
+    &__body
+      background-color: $color-blanco
+      height: 100%
+      overflow: scroll
+    &__title
+      padding-top: 2rem
+    &__organizer
+      display: grid
+      grid-template: 1fr 1fr 1fr / 1fr
+      grid-gap: 1rem
+      height: 15rem
+      padding-top: 2.5rem
+      padding-bottom: 1rem
+      div
+        border-bottom: 1px solid $color-gris
+      input
+        height: 3rem
+        &::placeholder
+          color: $color-gris
+
+    &__last-margin
+       margin-bottom: 22rem
+
+    &__input
+      padding: 0
+  &__btn
+    position: fixed
+    bottom: 0
+    padding-top: 1.5rem
+    padding-bottom: 1.5rem
+    background: $color-blanco
