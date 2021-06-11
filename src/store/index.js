@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+
     displayHeader: true,
     displayNoDate: false,
     displayPasat: false,

@@ -13,9 +13,29 @@
     height: 56px
   &__icon
     display: flex
+    flex-direction: column
     align-items: center
     justify-content: center
     height: 100%
+    transform: translate(0, 15px)
+    transition-duration: 0.3s
+    i
+      margin-right: 0
     img
       width: auto
       height: 23px
+
+  &__txt
+    display: block
+    color: $color-negro
+    opacity: 0
+    transition-duration: 0.3s
+    transform: translate(0, 15px)
+    user-select: none
+  &__active
+    & > .menu__icon
+      transform: translate(0px, 0px)
+    & > .menu__icon
+          .menu__txt
+            opacity: 1
+            transform: translate(0, 0px)

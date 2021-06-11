@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+import Bag from '../views/Bag.vue'
 import TravelSingle from '../views/TravelSingle.vue'
 import TravelPlan from '../views/TravelPlan.vue'
 import ActivitySingle from '../views/ActivitySingle.vue'
@@ -18,9 +18,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/about/',
-    name: 'About',
-    component: About
+    path: '/bag/',
+    name: 'Bag',
+    component: Bag
   },
   {
     path: '/user/',
