@@ -3,20 +3,16 @@ import {format} from "date-fns";
 export default {
     methods: {
          obtenerPlanes: function ()  {
-            fetch(this.$store.state.URL_API_PLANES, {
-            headers: {
-                'Authorization': this.$store.state.Authorization,
-                }
-            })
-            .then((response) => response.json())
-            .then((json) => this.$store.state.planes = json.records)
-            .then(() => this.verSiHayActividades())
-            .then(() => this.primerDiaAlCargar())
+             fetch(this.$store.state.URL_API_PLANES)
+                .then((response) => response.json())
+                .then((json) => this.$store.state.planes = json.records)
+                .then(() => this.verSiHayActividades())
+                .then(() => this.primerDiaAlCargar())
 
         },
         verSiHayActividades: function() {
             this.$store.state.planesActividad = this.$store.state.planes.filter(plan => {
-            return plan.fields.Viajes[0] === this.$store.state.IdTravel});
+            return plan.id_travel === this.$store.state.IdTravel});
         },
         primerDiaAlCargar: function (){
             this.pasarDia(this.$store.state.diasActividad[this.$store.state.diaInicialActividades])

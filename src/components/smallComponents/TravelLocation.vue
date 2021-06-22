@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     comprobarTitle: function (){
-
       let comprobar = this.ciudades.some(ciudad => ciudad.place_name === this.busqueda)
       if (comprobar){
         const longitud = this.ciudades.filter( (ciudad)=>{
@@ -61,29 +60,18 @@ export default {
         this.actualizarlocation(this.$route.params.travelId, this.busqueda, longitud.toString(), latitud.toString());
       }
     },
-    actualizarlocation: function (id, location,longitud, latitud){
-      this.travelFalse=false
-      fetch(this.$store.state.URL_UPDATE, {
-        headers: {
-          'Authorization': this.$store.state.Authorization,
-          'Content-type': 'application/json'
-        },
-        //pacth un solo producto a la vez
-        method: 'PATCH',
-        body: JSON.stringify({
-          "records": [
-            {
-              "id": id,
-              "fields": {
-                "Localizacion": location,
-                "Longitud":  longitud,
-                "Latitud": latitud
-              }
-            }
-          ]
-        })
-      })
-          .then(() => this.obtenerViajes())
+    actualizarDatos: function (id){
+      return this.$store.state.viajes.filter((viaje) => {
+        return viaje.id_travel=== id
+      })[0]
+    },
+    actualizarlocation: function (id, location, long, lat){
+      this.travelFalse = false;
+      this.myTravel(this.actualizarDatos(id).id_travel, this.actualizarDatos(id).nameTravel, this.actualizarDatos(id).image, location, long, lat, this.actualizarDatos(id).date_initial, this.actualizarDatos(id).date_end, this.actualizarDatos(id).money, this.actualizarDatos(id).status,this.actualizarDatos(id).deleted);
+      this.$store.state.viajes[id - 1].location = location;
+      this.$store.state.viajes[id - 1].longitud = long;
+      this.$store.state.viajes[id - 1].latitud = lat;
+
     },
     focused: function(){
       if (this.travelFalse === this.travelLocation) {

@@ -3,15 +3,15 @@
     <div class="travel__subtitle">
       <h3> En marcha</h3>
     </div>
-    <div class="travel__big-card" v-for="viaje in $store.state.viajesPresentes" :key="viaje.id"
-         @click="$router.push({ name: 'TravelSingle', params: {travelId: viaje.id} })"
+    <div class="travel__big-card" v-for="viaje in $store.state.viajesPresentes" :key="viaje.id_travel"
+         @click="$router.push({ name: 'TravelSingle', params: {travelId: viaje.id_travel} })"
          @touchstart="pulsarSlide()" @touchend="despulsarSlide()">
-      <div class="travel__bc-img" :style="`background-image:url(${viaje.fields.Imagen[0].url})`">
+      <div class="travel__bc-img" :style="`background-image:url(${viaje.image})`">
       </div>
       <div class="travel__bc-footer">
         <div class="travel__bc-text">
-          <h3>{{ viaje.fields.NombreViaje }}</h3>
-          <p style="text-transform: capitalize" >{{ formatearFecha(viaje.fields.FechaViajeInicio) }}</p>
+          <h3>{{ viaje.nameTravel }}</h3>
+          <p style="text-transform: capitalize" >{{ formatearFecha(viaje.date_initial) }}</p>
         </div>
         <div class="travel__bc-location">
           <a href="#">

@@ -17,7 +17,9 @@
              class="actions__img"
              @click="actualizarImage($route.params.travelId,resultado.webformatURL); cerrarAcciones()"
              >
+        <div class="actions__block"></div>
       </div>
+
     </section>
     <section class=" formu__btn container">
       <button class="btn-outline" @click="cerrarAcciones()">
@@ -41,33 +43,18 @@ export default {
     ObtenerViaje,
   ],
   methods: {
-    actualizarImage: function (id, url){
-      fetch(this.$store.state.URL_UPDATE, {
-        headers: {
-          'Authorization': this.$store.state.Authorization,
-          'Content-type': 'application/json'
-        },
-        //pacth un solo producto a la vez
-        method: 'PATCH',
-        body: JSON.stringify({
-          "records": [
-            {
-              "id": id,
-              "fields": {
-                "Imagen":[
-                  {
-                   "url": url,
-                  }
-                ]
-              }
-            }
-          ]
-        })
-      })
-          .then(() => this.obtenerViajes())
+    actualizarDatos: function (id){
+      return this.$store.state.viajes.filter((viaje) => {
+        return viaje.id_travel=== id
+      })[0]
     },
+    actualizarImage: function (id, url){
+      this.myTravel(this.actualizarDatos(id).id_travel, this.actualizarDatos(id).nameTravel, url, this.actualizarDatos(id).location, this.actualizarDatos(id).longitud, this.actualizarDatos(id).latitud, this.actualizarDatos(id).date_initial, this.actualizarDatos(id).date_end, this.actualizarDatos(id).money, this.actualizarDatos(id).status,this.actualizarDatos(id).deleted);
+      this.$store.state.viajes[id - 1].image = url;
+    },
+
     obtenerResultados : function () {
-      fetch(`https://pixabay.com/api/?key=14581694-1e47b08e85369f5be7d24ef40&q=${this.busqueda}&per_page=20&lang=es`)
+      fetch(`https://pixabay.com/api/?key=14581694-1e47b08e85369f5be7d24ef40&q=${this.busqueda}&per_page=21&lang=es`)
           .then(function(response) {
             // Transforma la respuesta. En este caso lo convierte a JSON
             return response.json();

@@ -52,20 +52,20 @@ export default {
   computed: {
     travelSingle: function (){
       return this.$store.state.viajes.filter((viaje) => {
-        return viaje.id === this.$route.params.travelId
-      })[0].fields
+        return viaje.id_travel=== this.$route.params.travelId
+      })[0]
     },
     nombre: function () {
-      return this.travelSingle.NombreViaje
+      return this.travelSingle.nameTravel
     },
     imagen: function (){
-      return this.travelSingle.Imagen[0].url}
-    ,
+      return this.travelSingle.image
+    },
     fechaInicio: function () {
-      return this.travelSingle.FechaViajeInicio}
+      return this.travelSingle.date_initial}
     ,
     fechaFin: function () {
-      return this.travelSingle.FechaViajeFin}
+      return this.travelSingle.date_end}
     ,
     formatearFecha: function () {
       this.durationTravel();
@@ -74,10 +74,10 @@ export default {
       return StarDate + ' ~ ' + EndDate
     },
     localizacion: function () {
-      return this.travelSingle.Localizacion}
+      return this.travelSingle.location}
     ,
     gastos: function () {
-      const gasto = this.travelSingle.Gastos;
+      const gasto = this.travelSingle.money;
       if( gasto === undefined) {
         return "Gastos del viaje"
       }else{

@@ -1,5 +1,5 @@
 <?php
-require_once ('connect.php');
+require_once('connect.php');
 // Cabecera que indica el tipo de contenido a servir
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");

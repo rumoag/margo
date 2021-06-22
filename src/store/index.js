@@ -25,14 +25,20 @@ export default new Vuex.Store({
     resultadosIcon:[],
     IdTravel: '',
     diaInicialActividades: 0,
-    URL_API: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/Viajes?view=Grid%20view",
-    URL_UPDATE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/Viajes",
-    URL_DELETE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/Viajes?records[]=",
-    Authorization: "Bearer keypFgW9ql6PGevJQ",
-    URL_API_PLANES: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/PlanViaje?view=Grid%20view",
-    URL_API_PLANES_CREATE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/PlanViaje",
-    URL_API_PLANES_DELETE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/PlanViaje?records[]="
-
+    URL_API: "http://localhost:8080/api/apiTravel.php",
+    URL_API_PLANES: "http://localhost:8080/api/apiTravelActivities.php",
+    //URL_API_PLANES_CREATE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/PlanViaje",
+    //URL_API_PLANES_DELETE: "https://api.airtable.com/v0/app1Myyzo3nnkGOPj/PlanViaje?records[]="
+    myIdTravel: '',
+    myNameTravel: '',
+    myImage: '',
+    myLocation: '',
+    myLongitud: '',
+    myLatitud: '',
+    myDateInitial: '',
+    myDateEnd: '',
+    myMoney: '',
+    myStatus: '',
   },
   getters:{
   },

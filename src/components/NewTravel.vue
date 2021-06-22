@@ -20,39 +20,29 @@ export default {
   methods: {
       crearNuevoViaje:function () {
         let that = this
-          fetch("https://api.airtable.com/v0/app1Myyzo3nnkGOPj/Viajes", {
+          fetch(this.$store.state.URL_API, {
             headers: {
-              'Authorization': 'Bearer keypFgW9ql6PGevJQ',
               'Content-type': 'application/json'
             },
-
             method: 'POST',
             body: JSON.stringify({
-              "records": [
-                {
-                  "fields": {
-                    "NombreViaje": "Sin titulo",
-                    "Estado": "Sin fecha",
-                    "Localizacion": "Localización del viaje",
-                    "Imagen": [
-                      {
-                        "url": "https://images.pexels.com/photos/5725589/pexels-photo-5725589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                      }
-                    ],
-                    "FechaViajeInicio": "2020-01-01T15:01:07.798Z",
-                    "FechaViajeFin": "2020-01-02T15:01:07.798Z",
-                  }
-                },
-              ]
+                    nameTravel: "Sin titulo",
+                    status: '0',
+                    location: "Localización del viaje",
+                    image:  "https://images.pexels.com/photos/5725589/pexels-photo-5725589.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                    date_initial: "2020-01-01T15:01:07.798Z",
+                    date_end: "2020-01-02T15:01:07.798Z",
+                    money: '0',
             })
           })
+          .then((response) => response.json())
           .then(() => that.obtenerViajes())
           .then(() => that.irAlNuevoViajeCreado())
           this.$router.push({ name: 'TravelSingle', params: {travelId: this.irAlNuevoViajeCreado()} })
       },
       irAlNuevoViajeCreado: function (){
         const tamanyoArrayViajes = this.$store.state.viajes.length - 1;
-        return this.$store.state.viajes[tamanyoArrayViajes].id
+        return this.$store.state.viajes[tamanyoArrayViajes].id_travel
       }
 
   },

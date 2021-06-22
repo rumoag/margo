@@ -31,27 +31,15 @@ export default {
     }
   },
   methods: {
+    actualizarDatos: function (id){
+      return this.$store.state.viajes.filter((viaje) => {
+        return viaje.id_travel=== id
+      })[0]
+    },
     actualizarTitle: function (id, titulo){
-      this.travelFalse=false
-      fetch(this.$store.state.URL_UPDATE, {
-        headers: {
-          'Authorization': this.$store.state.Authorization,
-          'Content-type': 'application/json'
-        },
-        //pacth un solo producto a la vez
-        method: 'PATCH',
-        body: JSON.stringify({
-          "records": [
-            {
-              "id": id,
-              "fields": {
-                "NombreViaje": titulo,
-              }
-            }
-          ]
-        })
-      })
-          .then(() => this.obtenerViajes())
+      this.travelFalse = false;
+      this.myTravel(this.actualizarDatos(id).id_travel, titulo, this.actualizarDatos(id).image, this.actualizarDatos(id).location, this.actualizarDatos(id).longitud, this.actualizarDatos(id).latitud, this.actualizarDatos(id).date_initial, this.actualizarDatos(id).date_end, this.actualizarDatos(id).money, this.actualizarDatos(id).status,this.actualizarDatos(id).deleted );
+      this.$store.state.viajes[id - 1].nameTravel = titulo;
     },
     focused: function(){
       if (this.travelFalse === this.TravelTitle) {

@@ -14,7 +14,10 @@
   div.actions__duo
     margin-top: 1rem
     margin-bottom: 2rem
+  &__block
+    height: 7rem
   &__ind
+    box-sizing: border-box
     background-color: $color-blanco
     border-top: 1px solid $color-gris
     border-bottom: 1px solid $color-gris
@@ -28,14 +31,15 @@
     h3
       font-weight: 400
   &__ind-img
+    box-sizing: border-box
     background-color: $color-gris
-    padding: .75rem 23px
+    padding: .75rem 13px .75rem 23px
     display: grid
-    grid-template-columns: repeat( 5, 1fr)
+    grid-template-columns: repeat( 3, 1fr)
     width: -moz-available
     width: -webkit-fill-available
-    height: 70vh
-    grid-gap: .5rem
+    height: 77vh
+    grid-gap: .2rem
     overflow-y: scroll
     scrollbar-width: thin
     scrollbar-color: $color-gris $color-negro;
@@ -51,10 +55,10 @@
       border: 3px solid $color-gris
 
   &__img
-    height: 75px!important
+    height: 15vh !important
     cursor: pointer
     object-fit: cover
-    border-radius: 8px
+
   @keyframes actions
     from
       transform: translateY(100vh)

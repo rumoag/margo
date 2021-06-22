@@ -46,27 +46,15 @@ export default {
       this.busqueda =this.busqueda.split('').reverse().join('').replace(/^[,]/,'');
       return this.busqueda;
     },
-    actualizarGastos: function (id, gasto){
-      this.travelFalse=false
-      fetch(this.$store.state.URL_UPDATE, {
-        headers: {
-          'Authorization': this.$store.state.Authorization,
-          'Content-type': 'application/json'
-        },
-        //pacth un solo producto a la vez
-        method: 'PATCH',
-        body: JSON.stringify({
-          "records": [
-            {
-              "id": id,
-              "fields": {
-                "Gastos": parseFloat(gasto),
-              }
-            }
-          ]
-        })
-      })
-          .then(() => this.obtenerViajes())
+    actualizarDatos: function (id){
+      return this.$store.state.viajes.filter((viaje) => {
+        return viaje.id_travel=== id
+      })[0]
+    },
+    actualizarGastos: function (id, gastos){
+      this.travelFalse = false;
+      this.myTravel(this.actualizarDatos(id).id_travel, this.actualizarDatos(id).nameTravel, this.actualizarDatos(id).image, this.actualizarDatos(id).location, this.actualizarDatos(id).longitud, this.actualizarDatos(id).latitud, this.actualizarDatos(id).date_initial, this.actualizarDatos(id).date_end, gastos, this.actualizarDatos(id).status,this.actualizarDatos(id).deleted);
+      this.$store.state.viajes[id - 1].money = gastos;
     },
     focused: function(){
       if (this.travelFalse === this.travelMoney) {

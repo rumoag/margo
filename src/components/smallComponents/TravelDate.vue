@@ -47,9 +47,9 @@ export default {
       const today = now.getDate() + "/" + (now.getMonth() +1) + "/" + now.getFullYear()
       const dateStart = this.travelDate[0].getDate() + "/" + (this.travelDate[0].getMonth() +1) + "/" + this.travelDate[0].getFullYear()
       if(today !== dateStart){
-        return this.travelDateEstate = "Futuro"
+        return this.travelDateEstate = '3'
       } else {
-        return this.travelDateEstate = "Presente"
+        return this.travelDateEstate = '2'
       }
 
     },
@@ -58,29 +58,17 @@ export default {
       this.travelDateEnd= this.travelDate[1]
       this.today();
     },
+    actualizarDatos: function (id){
+      return this.$store.state.viajes.filter((viaje) => {
+        return viaje.id_travel=== id
+      })[0]
+    },
     actualizarFecha: function (id){
       this.datesOrganized();
-      fetch(this.$store.state.URL_UPDATE, {
-        headers: {
-          'Authorization': this.$store.state.Authorization,
-          'Content-type': 'application/json'
-        },
-        //pacth un solo producto a la vez
-        method: 'PATCH',
-        body: JSON.stringify({
-          "records": [
-            {
-              "id": id,
-              "fields": {
-                "FechaViajeInicio": this.travelDateStart,
-                "FechaViajeFin": this.travelDateEnd,
-                "Estado": this.travelDateEstate,
-              }
-            }
-          ]
-        })
-      })
-          .then(() => this.obtenerViajes())
+      this.myTravel(this.actualizarDatos(id).id_travel, this.actualizarDatos(id).nameTravel, this.actualizarDatos(id).image, this.actualizarDatos(id).location, this.actualizarDatos(id).longitud, this.actualizarDatos(id).latitud, this.travelDateStart, this.travelDateEnd, this.actualizarDatos(id).money, this.travelDateEstate,this.actualizarDatos(id).deleted);
+      this.$store.state.viajes[id - 1].date_initial = this.travelDateStart;
+      this.$store.state.viajes[id - 1].date_end = this.travelDateEnd;
+      this.$store.state.viajes[id - 1].status = this.travelDateEstate;
     },
 
   },

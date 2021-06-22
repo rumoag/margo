@@ -34,17 +34,17 @@ export default {
   computed: {
     obtenerTravel: function (){
       return this.$store.state.viajes.filter( (viaje)=>{
-        return viaje.id === this.id
-      })[0].fields
+        return viaje.id_travel === this.id && viaje.deleted === '0'
+      })[0]
     },
     nombre: function () {
-      return this.obtenerTravel.NombreViaje
+      return this.obtenerTravel.nameTravel
     },
     imagen: function (){
-      return this.obtenerTravel.Imagen[0].url
+      return this.obtenerTravel.image
     },
     fecha: function () {
-      return this.obtenerTravel.FechaViajeInicio
+      return this.obtenerTravel.date_initial
     },
     cronoCero: function (){
       return this.$store.state.restoreCronometro

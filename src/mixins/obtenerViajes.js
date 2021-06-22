@@ -2,13 +2,9 @@ import { isAfter } from 'date-fns'
 export default {
     methods: {
          obtenerViajes: function ()  {
-            fetch(this.$store.state.URL_API, {
-            headers: {
-                'Authorization': 'Bearer keypFgW9ql6PGevJQ',
-                }
-            })
+            fetch(this.$store.state.URL_API)
             .then((response) => response.json())
-            .then((json) => this.$store.state.viajes = json.records)
+            .then((json) => this.$store.state.viajes = json)
             .then(() => this.today())
             .then(() => this.repartirViajes())
             .then(() => this.verViajes());
@@ -17,53 +13,72 @@ export default {
             this.$store.state.viajes.forEach((viaje)=>{
                 const now = new Date();
                 const nowDay = now.getDate();
-                const travelDate = new Date(viaje.fields.FechaViajeInicio);
+                const travelDate = new Date(viaje.date_initial);
                 const travelDateDay = travelDate.getDate();
                 if(nowDay === travelDateDay) {
-                    viaje.fields.Estado = "Presente"
+                    viaje.status = '2'
                 } else if (travelDate.getFullYear() === 2020){
-                    viaje.fields.Estado = "Sin fecha"
+                    viaje.status = '0'
                 } else if (isAfter(new Date(travelDate.getFullYear(), (travelDate.getMonth() +1), travelDate.getDate()), new Date(now.getFullYear(), (now.getMonth() +1), now.getDate()))){
-                    viaje.fields.Estado = "Futuro"
+                    viaje.status = '3'
                 } else {
-                    viaje.fields.Estado = "Pasado"
+                    viaje.status = '1'
                 }
-                this.actualizarEstado(viaje.id, viaje.fields.Estado)
+                this.myTravel(viaje.id_travel, viaje.nameTravel, viaje.image, viaje.location, viaje.longitud, viaje.latitud, viaje.date_initial, viaje.date_end, viaje.money, viaje.status, viaje.deleted)
             })
         },
-        actualizarEstado: function (id,estado){
-            fetch(this.$store.state.URL_UPDATE, {
+        myTravel: function (id,name,img,location,long,lat,dInit,dEnd,money,status,deleted){
+             this.$store.state.myIdTravel = id;
+             this.$store.state.myNameTravel = name;
+             this.$store.state.myImage = img;
+             this.$store.state.myLocation = location;
+             this.$store.state.myLongitud = long;
+             this.$store.state.myLatitud = lat;
+             this.$store.state.myDateInitial = dInit;
+             this.$store.state.myDateEnd = dEnd;
+             this.$store.state.myMoney = money;
+             this.$store.state.myStatus = status;
+            this.$store.state.deleted = deleted;
+             this.actualizarViaje();
+        },
+        actualizarViaje: function (){
+            fetch(this.$store.state.URL_API, {
                 headers: {
-                    'Authorization': this.$store.state.Authorization,
                     'Content-type': 'application/json'
                 },
-                //pacth un solo producto a la vez
-                method: 'PATCH',
+                method: 'PUT',
                 body: JSON.stringify({
-                    "records": [
-                        {
-                            "id": id,
-                            "fields": {
-                                "Estado": estado,
-                            }
-                        }
-                    ]
+                    id_travel: this.$store.state.myIdTravel,
+                    nameTravel: this.$store.state.myNameTravel,
+                    image: this.$store.state.myImage,
+                    location: this.$store.state.myLocation,
+                    longitud: this.$store.state.myLongitud,
+                    latitud: this.$store.state.myLatitud,
+                    date_initial: this.$store.state.myDateInitial,
+                    date_end: this.$store.state.myDateEnd,
+                    money: this.$store.state.myMoney,
+                    status: this.$store.state.myStatus,
+                    deleted: this.$store.state.deleted,
                 })
             })
+            this.repartirViajes();
         },
         repartirViajes: function() {
+            this.$store.state.viajes = this.$store.state.viajes.filter(viaje => {
+                return viaje.deleted !== '1'
+            });
             this.$store.state.viajesPasados = this.$store.state.viajes.filter(viaje => {
-            return viaje.fields.Estado === "Pasado"
-        });
+                return viaje.status === '1'
+            });
             this.$store.state.viajesFuturos = this.$store.state.viajes.filter(viaje => {
-            return viaje.fields.Estado === "Futuro"
-        });
+                return viaje.status === '3'
+            });
             this.$store.state.viajesPresentes = this.$store.state.viajes.filter(viaje => {
-            return viaje.fields.Estado === "Presente"
-        });
+                return viaje.status === '2'
+            });
             this.$store.state.viajesSinFechas = this.$store.state.viajes.filter(viaje => {
-            return viaje.fields.Estado === "Sin fecha"
-        });
+                return viaje.status === '0'
+            });
         },
         //Para ver si hay viajes pasados o sin fecha para activar el componente
         verViajes: function (){
